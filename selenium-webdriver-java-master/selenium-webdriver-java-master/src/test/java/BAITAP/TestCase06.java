@@ -41,13 +41,13 @@ public class TestCase06 {
         String email = "hoangphse172789@fpt.edu.vn";
         String pass = "172789";
         //billing
-        String region = "Scotland";
-        String postcode = "2000";
+        String region = "HCM";
+        String postcode = "7000";
         String firstName ="hoang";
         String lastName= "pham";
-        String address = "150 Roads";
-        String city = "Roses City";
-        String telephone= "0334363339";
+        String address = "150 Luong Dinh Cua";
+        String city = "HCM city";
+        String telephone= "0123456789";
         //shipping
         String firstname2 = "Alex";
         String lastname2 = "Nguyen";
@@ -113,7 +113,7 @@ public class TestCase06 {
             //Step 6.  Enter general shipping country, state/province and zip for the shipping cost estimate
             WebElement dropdownElement = driver.findElement(By.xpath("//select[@id='country']"));
             Select selectOption = new Select(dropdownElement);
-            selectOption.selectByVisibleText("United Kingdom");
+            selectOption.selectByVisibleText("Vietnam");
             cartPage.enterRegionInput(region);
             cartPage.enterPostcodeInput(postcode);
 
@@ -153,14 +153,13 @@ public class TestCase06 {
             }
 
 
-            //Screenshot
-            File scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
-            String png = ("D:\\STUDY\\Semester 5\\SWT301\\Ecommerce-project-TC01-TC02-\\selenium-webdriver-java-master\\selenium-webdriver-java-master\\src\\test\\resources\\testcase06" + ".png");
-            FileUtils.copyFile(scrFile, new File(png));
 
+            //debug
+            Thread.sleep(2000);
             // Step 9. Select Shipping Cost (already selected as default), Update Total
             driver.findElement(By.id("s_method_flatrate_flatrate")).click();
-            driver.findElement(By.xpath("//button[@title='Update Total']")).click();
+            //driver.findElement(By.xpath("//button[@title='Update Total']")).click();
+            driver.findElement(By.xpath("//span[contains(text(),'Update Total')]")).click();
             //debug
             Thread.sleep(2000);
 
@@ -176,10 +175,6 @@ public class TestCase06 {
                 e.printStackTrace();
             }
 
-            //Screenshot
-            scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
-            png = ("D:\\STUDY\\Semester 5\\SWT301\\Ecommerce-project-TC01-TC02-\\selenium-webdriver-java-master\\selenium-webdriver-java-master\\src\\test\\resources\\testcase06_1" + ".png");
-            FileUtils.copyFile(scrFile, new File(png));
             Thread.sleep(2000);
 
             // 11. Click PROCEED TO CHECKOUT
@@ -194,23 +189,24 @@ public class TestCase06 {
 
             //Step 12a. Enter Billing Information, and click Continue
 
-
+            /*
             checkOutPage.enterFirstName(firstName);
             checkOutPage.enterLastName(lastName);
             checkOutPage.enterAddress(address);
             checkOutPage.enterCity(city);
+            */
 
             //select country
-
+            /*
             WebElement dropdownElementNew = driver.findElement(By.xpath("//select[@id='billing:country_id']"));
             Select selectOptionNew = new Select(dropdownElementNew);
-            selectOptionNew.selectByVisibleText("United Kingdom");
+            selectOptionNew.selectByVisibleText("Vietnam");
             checkOutPage.enterPostcode(postcode);
             checkOutPage.enterTelephone(telephone);
+            */
 
             // check"Ship to different address"
             driver.findElement(By.xpath("//label[@for='billing:use_for_shipping_no']")).click();
-
             driver.findElement(By.xpath(".//*[@id='billing-buttons-container']/button")).click();
 
             Thread.sleep(2000);
@@ -223,11 +219,13 @@ public class TestCase06 {
 
 
             //Step 12b. Enter Shipping Information, and click Continue
+            /*
             checkOutPage.enterShippingFirstName(firstname2);
             checkOutPage.enterShippingLastName(lastname2);
             checkOutPage.enterShippingAddress(address2);
             checkOutPage.enterShippingCity(city2);
             checkOutPage.enterShippingTelephone(telephone2);
+             */
             driver.findElement(By.xpath(".//*[@id='shipping-buttons-container']/button")).click();
 
             // switching to new window
@@ -260,11 +258,6 @@ public class TestCase06 {
             String orderNum = driver.findElement(By.xpath(".//*[@id='top']/body/div[1]/div/div[2]/div/div/p[1]/a")).getText();
             System.out.println("*** Your order number for your record = " + orderNum);
 
-
-            //Screenshot
-            scrFile = ((TakesScreenshot)driver).getScreenshotAs(FILE);
-            png = ("D:\\STUDY\\Semester 5\\SWT301\\Ecommerce-project-TC01-TC02-\\selenium-webdriver-java-master\\selenium-webdriver-java-master\\src\\test\\resources\\testcase06_2" + ".png");
-            FileUtils.copyFile(scrFile, new File(png));
             Thread.sleep(2000);
 
 

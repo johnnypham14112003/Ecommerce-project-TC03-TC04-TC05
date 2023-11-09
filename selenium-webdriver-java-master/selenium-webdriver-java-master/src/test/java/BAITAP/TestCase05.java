@@ -1,5 +1,6 @@
 package BAITAP;
 
+import POM.LoginPage;
 import POM.RegisterPage;
 import driver.driverFactory;
 import org.apache.commons.io.FileUtils;
@@ -35,12 +36,15 @@ import static org.testng.AssertJUnit.assertEquals;
 @Test
 public class TestCase05 {
     public static void testTC05() {
+        String email = "hoangphse172789@fpt.edu.vn";
+        String pass = "172789";
+
         int scc = 1;
-        String firstName ="khanh";
-        String lastName = "quang";
-        String email_address = "khanh3003@gmail.com";
-        String password = "khanh123";
-        String confirmPassword = "khanh123";
+        String firstName ="hoang";
+        String lastName = "pham";
+        String email_address = "hoangphse172789@fpt.edu.vn";
+        String password = "172789";
+        String confirmPassword = "172789";
 
         StringBuffer verificationError = new StringBuffer();
         //init web driver session
@@ -50,7 +54,7 @@ public class TestCase05 {
             driver.get("http://live.techpanda.org/");
 
             RegisterPage registerPage = new RegisterPage(driver);
-
+/*
             //Step 2. Click on my account link
             registerPage.clickMyAccountLink();
             //debug
@@ -100,8 +104,21 @@ public class TestCase05 {
                 assertEquals(tWelcome, vWelcome);
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
+            //debug
+            Thread.sleep(2000);
+            LoginPage loginPage = new LoginPage(driver);
+            registerPage.clickMyAccountLink();
 
+            loginPage.enterEmail(email);
+            loginPage.enterPassword(pass);
+            loginPage.clickLoginButton();
+            //debug
+            Thread.sleep(2000);
+            // switching to new window
+            for (String handle : driver.getWindowHandles()) {
+                driver.switchTo().window(handle);
+            }
 
             //Step 6. Go to TV menu
             driver.findElement(By.xpath(".//*[@id='nav']/ol/li[2]/a")).click();
