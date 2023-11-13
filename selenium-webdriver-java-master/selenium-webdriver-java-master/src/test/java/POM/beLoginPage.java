@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class loginPage {
+public class beLoginPage {
     WebDriver driver;
 
-    By emailInputLocator = By.id("email");
-    By passwordInputLocator = By.id("pass");
+    By emailInputLocator = By.id("username");
+    By passwordInputLocator = By.id("login");
 
-    By loginButton = By.xpath("//button[@id='send2']");
+    By loginButton = By.xpath("//input[@title='Login']");
 
-    public loginPage(WebDriver driver) {
+    public beLoginPage(WebDriver driver) {
         this.driver = driver;
     }
 

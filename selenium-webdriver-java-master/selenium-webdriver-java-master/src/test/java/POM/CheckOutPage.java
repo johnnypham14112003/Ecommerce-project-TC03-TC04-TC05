@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CheckOutPage {
+public class checkOutPage {
     WebDriver driver;
     //Billing
     By checkOutButton = By.xpath("//button[@title='Proceed to Checkout']");
@@ -22,13 +22,9 @@ public class CheckOutPage {
     By shippingCity = By.id("shipping:city");
     By shippingTelephone = By.id("shipping:telephone");
 
-
-
-
-
     //Constructor with required parameter as a WedDriver
 
-    public CheckOutPage(WebDriver driver) {
+    public checkOutPage(WebDriver driver) {
         this.driver = driver;
     }
 
